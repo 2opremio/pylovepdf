@@ -1,10 +1,14 @@
 from pylovepdf.tools.officepdf import OfficeToPdf
+import time
 
-t = OfficeToPdf('public_key', verify_ssl=True)
-t.add_file('pdf_file')
+start = time.time()
+t = OfficeToPdf('project_public_XXXXXXXXXXXXXXXXX', verify_ssl=True)
+t.add_file('sample.docx')
 t.debug = False
-t.set_output_folder('output_directory')
+t.set_output_folder('/Users/fons/certus/ilovepdf/')
 
 t.execute()
 t.download()
+end = time.time()
+print("Time spent: %f ms" % ((end - start) * 1000) )
 t.delete_current_task()
